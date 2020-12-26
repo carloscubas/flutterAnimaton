@@ -4,13 +4,14 @@ import 'package:animation/components/gnat.dart';
 import 'package:flame/components/animation_component.dart';
 
 import '../main.dart';
+import 'Explosion.dart';
 
 class Minotaur extends AnimationComponent {
   static const TIME = 0.75;
   List<Gnat> gnatList = <Gnat>[];
 
   Minotaur(Offset position, List<Gnat> gnatList)
-      : super.sequenced(130, 130, 'minotaur.png', 13,
+      : super.sequenced(130, 130, 'minotaur.png', 10,
             textureWidth: 96.0, textureHeight: 96.0) {
     this.x = position.dx - 65;
     this.y = position.dy - 65;
@@ -27,6 +28,7 @@ class Minotaur extends AnimationComponent {
           if (remove) {
             gnat.remove = true;
             points += 1;
+            game.add(new Explosion(gnat));
           }
         }
       });

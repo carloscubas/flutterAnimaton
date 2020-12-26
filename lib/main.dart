@@ -8,10 +8,12 @@ import 'package:flame/gestures.dart';
 
 var game;
 var points = 0;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Flame.images.loadAll(['minotaur.png', 'hunter.png', 'gnat.png']);
-
+  Flame.images
+      .loadAll(['minotaur.png', 'hunter.png', 'gnat.png', 'explosion.png']);
+  Flame.audio.load('explosion.mp3');
   game = Game();
   runApp(game.widget);
 }

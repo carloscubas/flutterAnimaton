@@ -51,8 +51,9 @@ flutter:
     - assets/images/minotaur.png
     - assets/images/hunter.png
     - assets/images/gnat.png
+    - assets/images/explosion.png
+    - assets/audio/explosion.mp3
     
-
   fonts:
    - family: Halo
      fonts:
