@@ -5,7 +5,7 @@ import 'dart:math';
 import 'dart:ui';
 
 const ComponentSize = 50.0;
-const time = 10;
+const time = 20;
 
 class Gnat extends SpriteComponent {
   Size dimensions;

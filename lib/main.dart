@@ -6,15 +6,23 @@ import 'package:flame/flame.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flame/gestures.dart';
 
+import 'components/background.dart';
+
 var game;
 var points = 0;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Flame.images
-      .loadAll(['minotaur.png', 'hunter.png', 'gnat.png', 'explosion.png']);
+  Flame.images.loadAll([
+    'minotaur.png',
+    'hunter.png',
+    'gnat.png',
+    'explosion.png',
+    'minotaur-2.png'
+  ]);
   Flame.audio.load('explosion.mp3');
-  game = Game();
+  var dimensions = await Flame.util.initialDimensions();
+  game = Game(dimensions);
   runApp(game.widget);
 }
 
@@ -22,14 +30,23 @@ class Game extends BaseGame with TapDetector {
   Minotaur minotaur;
   List<Gnat> gnatList;
   Gnat gnat;
+  Background _background;
+  Size dimensions;
+  bool backgroud = false;
 
-  Game() {
+  Game(this.dimensions) {
     gnatList = <Gnat>[];
+    _background = new Background(dimensions);
   }
 
   double creationTimer = 0.0;
   @override
   void update(double t) {
+    if (!backgroud) {
+      add(_background);
+      backgroud = true;
+    }
+
     creationTimer += t;
     if (creationTimer >= 1.0) {
       creationTimer = 0.0;
