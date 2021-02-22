@@ -10,7 +10,7 @@ import 'components/background.dart';
 
 var game;
 var points = 0;
-
+// teste
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Flame.images.loadAll([
